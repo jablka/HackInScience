@@ -1,2 +1,2 @@
 # HackInScience
-exercises
+my solutions to python exercises
