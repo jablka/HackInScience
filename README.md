@@ -1,1 +1,1 @@
-my solutions to python exercises HackInScience https://www.hackinscience.org/exercises/
+my solutions to python exercises **HackInScience** https://www.hackinscience.org/exercises/
