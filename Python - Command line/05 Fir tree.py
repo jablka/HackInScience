@@ -2,7 +2,7 @@ import sys
 
 def stromek(times):
 
-    CONST = 4
+    CONST = 4 # štyri riadky...základ stromku
 
     s1 = ''
     buffer = [ ]
@@ -10,19 +10,19 @@ def stromek(times):
     slice_ = 0
     for t in range(times):
 
-        if len(buffer) > 1:
-            if (t+1) % 2 == 0:
+        if len(buffer) > 1: # ak je viac ako jednodielový stromček (teda ak t > 0 (druhý a každý ďalší cyklus)... aj takto by sa to dalo napísať)
+            if (t+1) % 2 == 0: # každý druhý cyklus sa navyšuje slice o 2
                 slice_ += 2
-            base = buffer[-1][:-slice_] # posledný riadok, mínus dve hviezdičky
+            base = buffer[-1][:-slice_] # base bude teraz posledný riadok, mínus príslušný počet hviezdičiek
 
-        for i in range(CONST+t):
+        for i in range(CONST+t): # tu sa generuje príslušný diel stromčeku
             if i == 0:
                 s1 = base
             else:
                 s1 += '**'
             buffer.append(s1)
 
-    # kmen
+    # kmeň
     width = len(buffer[-1])
     for i in range(times):
         if times % 2 == 0:
@@ -35,7 +35,6 @@ def stromek(times):
         buffer.append(s2) # kmeň do buffra    
 
     # samotné vykreslenie
-    # width = len(buffer[-1])
     for i in buffer:
         print(i.center(width))    
 
