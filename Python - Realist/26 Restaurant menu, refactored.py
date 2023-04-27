@@ -2,11 +2,8 @@ class Dish:
     _dish_types = {'starter', 'dish', 'dessert'}
 
     def __init__(self, name, preparation_time, dish_type):
-                                             # dish_type:list['starter', 'dish', 'dessert'] # ? skúsiť
-        self.name = name
-        
+        self.name = name     
         self.preparation_time = preparation_time # implement comparing
-
         if (dish_type in Dish._dish_types):
             self.dish_type = dish_type # starter, dish, dessert
         else: 
@@ -34,8 +31,6 @@ class Menu:
     
     def add_dish(self, dish:Dish):
         self.list_of_dishes.append(dish)
-        # if dish not in self.list_of_dishes:
-        #     self.list_of_dishes.append(dish)
     
     def get_starters(self):
         return [ i for i in self.list_of_dishes if i.dish_type == 'starter' ]
@@ -69,16 +64,11 @@ class Menu:
 
         return thisOne1 + thisOne2 + thisOne3
 
-    def __add__(self,other): # implement add
-        one = [i for i in self.list_of_dishes]
-        two = [i for i in other.list_of_dishes]
-        one.extend(two)
-        newname = self.name+' & '+other.name
-        newMenu = Menu(newname)
-        newMenu.list_of_dishes = one
+    def __add__(self,other): # implement add. 
+        new_name = self.name+' & '+other.name
+        newMenu = Menu(new_name)
+        newMenu.list_of_dishes = self.list_of_dishes + other.list_of_dishes # lists can be simply concatenated
         return newMenu
-        # musíme mať alternative constructor?
-        # asi netreba...
 
     # finally, implement repr or str...
     def __repr__(self):
