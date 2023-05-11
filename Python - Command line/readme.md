@@ -1,4 +1,4 @@
-Python — Command line
+Python — Command line  
 ✔️ 1. Print parameters  
 ✔️ 2. Print the first parameter  
 ✔️ 3. Simple adder  

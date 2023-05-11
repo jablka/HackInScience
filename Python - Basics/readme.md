@@ -1,4 +1,4 @@
-Python — Basics
+Python — Basics  
 ✔️ 1. Hello World  
 ✔️ 2. Print 42  
 ✔️ 3. Number of seconds in a year  

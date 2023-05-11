@@ -1,4 +1,4 @@
-Python — Training
+Python — Training  
 ✔️ 1. Distance  
 ✔️ 2. Check if a number is prime  
 ✔️ 3. Sum of every prime number below n  
