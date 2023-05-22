@@ -1,10 +1,12 @@
-import re
+def flatten(a_list, f_list=None):
 
-def flatten(a_list):
+    if f_list == None:
+        f_list = [ ]
 
-    mystring = str(a_list)
-    # print(mystring)
+    for element in a_list:
+        if isinstance(element, list):
+            flatten(element, f_list=f_list)
+        else:
+            f_list.append(element)
 
-    najdene = re.findall('\d+', mystring)
-    result = list(map(int, najdene))
-    return result
+    return f_list
