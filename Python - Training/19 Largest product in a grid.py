@@ -1,5 +1,4 @@
 import math
-
 data = '''
 08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08
 49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00
@@ -23,55 +22,33 @@ data = '''
 01 70 54 71 83 51 54 69 16 92 33 48 61 43 52 01 89 19 67 48
 '''.strip().splitlines()
 
-# print(data)
-# print(len(data))
-
+##############################
+# convert to lines of integers
 grid = [ ]
 for line in data:
     splitted = list(map(int, line.split(' ')))
     grid.append(splitted)
 
-# print(grid)
+#########################
+# horizontalne maximum
 grid_products = [ ]
 for line in grid:
-    line_products = [ ]
     for i in range(len(line)-4):
-        line_products.append( (line[i:i+4], math.prod(line[i:i+4])) )
-    grid_products.append(line_products)
-
-# print(grid_products)
-maxim = [ ]
-for line in grid_products:
-    maxim.append(max(line, key=lambda a:a[1]))
-    # print()
-
-# print(maxim)
-# print()
-
-horizontalne_maximum = max(maxim, key=lambda a:a[1])
-# print(horizontalne_maximum)
+        grid_products.append(math.prod(line[i:i+4]))
+horizontalne_maximum = max(grid_products)
 
 # ######################
 # vertikálne maximum
 rozsah_y = len(grid) # 20
 rozsah_x = len(grid[0]) # 20
-# print(rozsah_x)
-# print(rozsah_y)
 stlpec = [ ]
 for x in range(rozsah_x):
-
     for y in range(rozsah_y-3):
         quadrupple = [ ]
         for i in range(4):
             quadrupple.append(grid[y+i][x])
-        stlpec.append(quadrupple)
-
-# print(stlpec)
-
-v_max = list(map(math.prod, stlpec))
-# print(v_max)
-vertikalne_maximum = max(v_max)
-# print(vertikalne_maximum)
+        stlpec.append(math.prod(quadrupple))
+vertikalne_maximum = max(stlpec)
 
 ##########################
 # diagonálne maximum
@@ -79,7 +56,6 @@ diagonal = [ ]
 coord_y = list(range(rozsah_y))
 coord_x = list(range(rozsah_y))
 for x in range(rozsah_x):
-
     for y in range(rozsah_y-3):
         quadrupple = [ ]
         for i in range(4):
@@ -87,27 +63,16 @@ for x in range(rozsah_x):
                 quadrupple.append(grid[y-i][x+i])
             else:
                 quadrupple = [ ]
-                break
-        
+                break      
         if quadrupple:
-            diagonal.append(quadrupple)
-
-# print(diagonal)
-diag_max = list(map(math.prod, diagonal))
-# print(diag_max)
-diagonalne_maximum = max(diag_max)
-# print(diagonalne_maximum)
+            diagonal.append(math.prod(quadrupple))
+diagonalne_maximum = max(diagonal)
 
 ###############################
 # diag 2
 # diagonalne maximum 2
-
 diagonal2 = [ ]
-coord_y = list(range(rozsah_y))
-coord_x = list(range(rozsah_y))
-
 for x in reversed(range(rozsah_x)):
-
     for y in reversed(range(rozsah_y-3)):
         quadrupple = [ ]
         for i in range(4):
@@ -115,19 +80,12 @@ for x in reversed(range(rozsah_x)):
                 quadrupple.append(grid[y-i][x-i])
             else:
                 quadrupple = [ ]
-                break
-        
+                break       
         if quadrupple:
-            diagonal2.append(quadrupple)
-
-# print(diagonal2)
-diag2_max = list(map(math.prod, diagonal2))
-# print(diag2_max)
-diagonal2_maximum = max(diag2_max)
-# print(diagonal2_maximum)
+            diagonal2.append(math.prod(quadrupple))
+diagonal2_maximum = max(diagonal2)
 
 ###################################
 # solution:
-vysledok = [ horizontalne_maximum[1], vertikalne_maximum, diagonalne_maximum, diagonal2_maximum ]
-# print(vysledok)
-print(sorted(vysledok)[-1])
+vysledok = max([ horizontalne_maximum, vertikalne_maximum, diagonalne_maximum, diagonal2_maximum ])
+print(vysledok)
